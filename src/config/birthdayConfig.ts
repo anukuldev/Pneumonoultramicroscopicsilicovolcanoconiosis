@@ -116,7 +116,7 @@ export const birthdayConfig: BirthdayConfig = {
   photoMessage:
     "Out of all the people in this world, somehow my story became more beautiful after you became a part of it.",
 
-  photoImage: "/images/her-photo.jpg",
+  photoImage: `${import.meta.env.BASE_URL}images/her-photo.jpg`,
 
   // ================================================================
   // 6 CHAPTER MEMORY JOURNEY
@@ -144,35 +144,35 @@ export const birthdayConfig: BirthdayConfig = {
 
       photos: [
         {
-          image: "/images/chapter01/01.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/01.jpg`,
           caption: "Where our story quietly began.",
         },
         {
-          image: "/images/chapter01/02.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/02.jpg`,
           caption: "A moment I didn't know would matter so much.",
         },
         {
-          image: "/images/chapter01/03.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/03.jpg`,
           caption: "The beginning of something beautiful.",
         },
         {
-          image: "/images/chapter01/04.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/04.jpg`,
           caption: "One little moment that changed everything.",
         },
         {
-          image: "/images/chapter01/05.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/05.jpg`,
           caption: "I still remember this feeling.",
         },
         {
-          image: "/images/chapter01/06.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/06.jpg`,
           caption: "Some beginnings become unforgettable.",
         },
         {
-          image: "/images/chapter01/07.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/07.jpg`,
           caption: "And somehow, here we are.",
         },
         {
-          image: "/images/chapter01/08.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter01/08.jpg`,
           caption: "The first chapter of our little story. ❤️",
         },
       ],
@@ -193,35 +193,35 @@ export const birthdayConfig: BirthdayConfig = {
 
       photos: [
         {
-          image: "/images/chapter02/01.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/01.jpg`,
           caption: "A little moment worth remembering.",
         },
         {
-          image: "/images/chapter02/02.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/02.jpg`,
           caption: "One of those moments that makes me smile.",
         },
         {
-          image: "/images/chapter02/03.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/03.jpg`,
           caption: "Nothing extraordinary, yet somehow everything.",
         },
         {
-          image: "/images/chapter02/04.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/04.jpg`,
           caption: "The little things are often the biggest things.",
         },
         {
-          image: "/images/chapter02/05.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/05.jpg`,
           caption: "A memory I would happily live again.",
         },
         {
-          image: "/images/chapter02/06.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/06.jpg`,
           caption: "Just you being you. ❤️",
         },
         {
-          image: "/images/chapter02/07.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/07.jpg`,
           caption: "Another little piece of happiness.",
         },
         {
-          image: "/images/chapter02/08.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter02/08.jpg`,
           caption: "A memory saved forever. ❤️",
         },
       ],
@@ -242,35 +242,35 @@ export const birthdayConfig: BirthdayConfig = {
 
       photos: [
         {
-          image: "/images/chapter03/01.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/01.jpg`,
           caption: "Beautiful without even trying.",
         },
         {
-          image: "/images/chapter03/02.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/02.jpg`,
           caption: "That smile.",
         },
         {
-          image: "/images/chapter03/03.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/03.jpg`,
           caption: "The person behind so many of my smiles.",
         },
         {
-          image: "/images/chapter03/04.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/04.jpg`,
           caption: "You have a way of making ordinary moments beautiful.",
         },
         {
-          image: "/images/chapter03/05.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/05.jpg`,
           caption: "One of my favorite views.",
         },
         {
-          image: "/images/chapter03/06.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/06.jpg`,
           caption: "Graceful, beautiful and completely you.",
         },
         {
-          image: "/images/chapter03/07.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/07.jpg`,
           caption: "A face I could never get tired of seeing.",
         },
         {
-          image: "/images/chapter03/08.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter03/08.jpg`,
           caption: "My favorite person in her own little world. ❤️",
         },
       ],
@@ -291,35 +291,35 @@ export const birthdayConfig: BirthdayConfig = {
 
       photos: [
         {
-          image: "/images/chapter04/01.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/01.jpg`,
           caption: "I'd keep this moment.",
         },
         {
-          image: "/images/chapter04/02.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/02.jpg`,
           caption: "A memory that still feels close.",
         },
         {
-          image: "/images/chapter04/03.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/03.jpg`,
           caption: "One of the days I want to remember forever.",
         },
         {
-          image: "/images/chapter04/04.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/04.jpg`,
           caption: "The kind of memory that never really fades.",
         },
         {
-          image: "/images/chapter04/05.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/05.jpg`,
           caption: "A moment that became a part of me.",
         },
         {
-          image: "/images/chapter04/06.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/06.jpg`,
           caption: "Every memory with you feels a little more special.",
         },
         {
-          image: "/images/chapter04/07.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/07.jpg`,
           caption: "I would replay this one again and again.",
         },
         {
-          image: "/images/chapter04/08.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter04/08.jpg`,
           caption: "And I hope we make many more like this. ❤️",
         },
       ],
@@ -340,35 +340,35 @@ export const birthdayConfig: BirthdayConfig = {
 
       photos: [
         {
-          image: "/images/chapter05/01.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/01.jpg`,
           caption: "Beautiful.",
         },
         {
-          image: "/images/chapter05/02.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/02.jpeg`,
           caption: "Graceful.",
         },
         {
-          image: "/images/chapter05/03.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/03.jpg`,
           caption: "Adorable.",
         },
         {
-          image: "/images/chapter05/04.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/04.jpeg`,
           caption: "Unforgettable.",
         },
         {
-          image: "/images/chapter05/05.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/05.jpeg`,
           caption: "My favorite smile.",
         },
         {
-          image: "/images/chapter05/06.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/06.jpg`,
           caption: "My favorite person.",
         },
         {
-          image: "/images/chapter05/07.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/07.jpeg`,
           caption: "Simply you.",
         },
         {
-          image: "/images/chapter05/08.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter05/08.jpg`,
           caption: "And somehow, you keep getting more beautiful. ❤️",
         },
       ],
@@ -389,35 +389,35 @@ export const birthdayConfig: BirthdayConfig = {
 
       photos: [
         {
-          image: "/images/chapter06/01.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/01.jpg`,
           caption: "A beautiful feeling I never expected.",
         },
         {
-          image: "/images/chapter06/02.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/02.jpg`,
           caption: "A little piece of you I carry in my heart.",
         },
         {
-          image: "/images/chapter06/03.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/03.jpg`,
           caption: "Somehow, you became someone so special to me.",
         },
         {
-          image: "/images/chapter06/04.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/04.jpg`,
           caption: "A smile of yours can brighten my ordinary days.",
         },
         {
-          image: "/images/chapter06/05.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/05.jpg`,
           caption: "Even from afar, you feel close to my heart.",
         },
         {
-          image: "/images/chapter06/06.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/06.jpg`,
           caption: "Some connections are beautiful even before the first meeting.",
         },
         {
-          image: "/images/chapter06/07.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/07.jpg`,
           caption: "And everything still waiting for us.",
         },
         {
-          image: "/images/chapter06/08.jpg",
+          image: `${import.meta.env.BASE_URL}images/chapter06/08.jpg`,
           caption: "This isn't the end of our memories. ❤️",
         },
       ],
@@ -435,27 +435,27 @@ export const birthdayConfig: BirthdayConfig = {
 
   memories: [
     {
-      image: "/images/memory1.jpg",
+      image: `${import.meta.env.BASE_URL}images/memory1.jpg`,
       caption: "That day I'll always remember ❤️",
     },
     {
-      image: "/images/memory2.jpg",
+      image: `${import.meta.env.BASE_URL}images/memory2.jpg`,
       caption: "One of my favorite moments with you.",
     },
     {
-      image: "/images/memory3.jpg",
+      image: `${import.meta.env.BASE_URL}images/memory3.jpg`,
       caption: "Some moments are impossible to forget.",
     },
     {
-      image: "/images/memory4.jpg",
+      image: `${import.meta.env.BASE_URL}images/memory4.jpg`,
       caption: "A perfect day, just you and me.",
     },
     {
-      image: "/images/memory5.jpg",
+      image: `${import.meta.env.BASE_URL}images/memory5.jpg`  ,
       caption: "The smile that lights up my world.",
     },
     {
-      image: "/images/memory6.jpg",
+      image: `${import.meta.env.BASE_URL}images/memory6.jpg`,
       caption: "Forever my favorite view.",
     },
   ],
