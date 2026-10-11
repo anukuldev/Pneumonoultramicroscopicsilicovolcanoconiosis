@@ -1,4 +1,4 @@
-name: Deploy Birthday Website
+name: Deploy Password-Protected Birthday Website
 
 on:
   push:
@@ -23,10 +23,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -37,13 +37,31 @@ jobs:
       - name: Build website
         run: npm run build
 
+      - name: Prepare protected website
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
+        run: |
+          if [ -z "$STATICRYPT_PASSWORD" ]; then
+            echo "Missing STATICRYPT_PASSWORD repository secret."
+            exit 1
+          fi
+
+          mkdir -p protected
+          cp -a dist/. protected/
+
+          npx --no-install staticrypt dist/index.html \
+            --password "$STATICRYPT_PASSWORD" \
+            --directory protected \
+            --template-title "A Birthday Surprise ❤️" \
+            --template-instructions "Enter the password to unlock your surprise."
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload build files
-        uses: actions/upload-pages-artifact@v4
+      - name: Upload protected website
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./protected
 
       - name: Deploy website
         id: deployment
