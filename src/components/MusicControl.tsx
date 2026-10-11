@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Music, VolumeX } from "lucide-react";
@@ -6,34 +7,64 @@ interface MusicControlProps {
   startPlaying: boolean;
 }
 
-export default function MusicControl({ startPlaying }: MusicControlProps) {
+export default function MusicControl({
+  startPlaying,
+}: MusicControlProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const audio = new Audio("/audio/romantic-song.mp3");
+    const audio = new Audio(
+      `${import.meta.env.BASE_URL}music/raataan-lambiyan.mp3`
+    );
+
     audio.loop = true;
-    audio.volume = 0.4;
+    audio.volume = 0.2;
     audioRef.current = audio;
-    setReady(true);
+
+    const handleCanPlay = () => setReady(true);
+    const handlePlay = () => setPlaying(true);
+    const handlePause = () => setPlaying(false);
+
+    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+
+    audio.load();
+
     return () => {
       audio.pause();
+      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+      audioRef.current = null;
     };
   }, []);
 
   useEffect(() => {
-    if (!startPlaying || !audioRef.current) return;
-    audioRef.current.play().then(() => setPlaying(true)).catch(() => {});
-  }, [startPlaying]);
+    const audio = audioRef.current;
+    if (!startPlaying || !audio) return;
 
-  const toggle = () => {
-    if (!audioRef.current) return;
-    if (playing) {
-      audioRef.current.pause();
+    audio.play().catch(() => {
+      // Browser autoplay may require the visitor to tap the button.
       setPlaying(false);
-    } else {
-      audioRef.current.play().then(() => setPlaying(true)).catch(() => {});
+    });
+  }, [startPlaying, ready]);
+
+  const toggle = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (!audio.paused) {
+      audio.pause();
+      return;
+    }
+
+    try {
+      await audio.play();
+    } catch {
+      setPlaying(false);
     }
   };
 
@@ -41,11 +72,13 @@ export default function MusicControl({ startPlaying }: MusicControlProps) {
     <motion.button
       onClick={toggle}
       disabled={!ready}
-      className="fixed right-4 top-4 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/40 text-pink-200 backdrop-blur-xl transition-all hover:scale-110 hover:border-pink-300/40"
+      className="fixed right-4 top-4 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/40 text-pink-200 backdrop-blur-xl transition-all hover:scale-110 hover:border-pink-300/40 disabled:opacity-50"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1 }}
       aria-label={playing ? "Pause music" : "Play music"}
+      title={playing ? "Pause music" : "Play music"}
+      type="button"
     >
       <AnimatePresence mode="wait">
         {playing ? (
@@ -64,7 +97,12 @@ export default function MusicControl({ startPlaying }: MusicControlProps) {
             />
           </motion.span>
         ) : (
-          <motion.span key="off" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.span
+            key="off"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <VolumeX className="h-5 w-5" />
           </motion.span>
         )}
