@@ -1,37 +1,119 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import BackgroundScene from "@/components/three/BackgroundScene";
+
 import IntroPage from "@/components/sections/IntroPage";
 import HeroSection from "@/components/sections/HeroSection";
 import PhotoSection from "@/components/sections/PhotoSection";
-import MemoriesSection from "@/components/sections/MemoriesSection";
 import TimelineSection from "@/components/sections/TimelineSection";
-import MemorySpaceSection from "@/components/sections/MemorySpaceSection";
 import ReasonsSection from "@/components/sections/ReasonsSection";
 import LetterSection from "@/components/sections/LetterSection";
 import CakeSection from "@/components/sections/CakeSection";
 import FinalSection from "@/components/sections/FinalSection";
+
+import Chapter01Beginning from "@/components/chapters/Chapter01Beginning";
+import Chapter02LittleMoments from "@/components/chapters/Chapter02LittleMoments";
+import Chapter03HerWorld from "@/components/chapters/Chapter03HerWorld";
+import Chapter05BeautifulYou from "@/components/chapters/Chapter05BeautifulYou";
+import Chapter06ForeverMemories from "@/components/chapters/Chapter06ForeverMemories";
+
 import Navigation from "@/components/Navigation";
 import MusicControl from "@/components/MusicControl";
 
-export default function App() {
+function App() {
   const [started, setStarted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    // Smooth scrolling
+    document.documentElement.style.scrollBehavior = "smooth";
+
+    const check = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     check();
+
     window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
+
+    return () => {
+      document.documentElement.style.scrollBehavior = "";
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
+  /* =====================================================
+     START OUR STORY
+     Hero button -> Photo Section
+  ===================================================== */
+
   const scrollToStory = () => {
-    document.getElementById("photo")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("photo")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  /* =====================================================
+     CHAPTER 02
+     Turn the page -> Chapter 03
+  ===================================================== */
+
+  const goToHerWorld = () => {
+    document
+      .getElementById("her-world")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
+  /* =====================================================
+     CHAPTER 03
+     Continue the story -> Timeline
+  ===================================================== */
+
+  const goToTimeline = () => {
+    document
+      .getElementById("story")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
+  /* =====================================================
+     CHAPTER 06
+     One last thing -> Letter
+  ===================================================== */
+
+  const goToLetter = () => {
+    document
+      .getElementById("letter")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0a0410] text-pink-50">
-      {!started && <IntroPage onOpen={() => setStarted(true)} />}
+    <div className="relative min-h-screen overflow-x-hidden bg-[#0a0410] text-pink-50">
+
+      {/* =================================================
+          INTRO
+      ================================================= */}
+
+      {!started && (
+        <IntroPage
+          onOpen={() => {
+            setStarted(true);
+          }}
+        />
+      )}
+
+      {/* =================================================
+          GLOBAL BACKGROUND
+          SAME ORIGINAL BEHAVIOUR
+      ================================================= */}
 
       <AnimatePresence>
         {started && (
@@ -40,30 +122,109 @@ export default function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            <BackgroundScene
-              heartsCount={isMobile ? 6 : 14}
-              particlesCount={isMobile ? 300 : 700}
-            />
+            {/* BackgroundScene intentionally kept out
+                of the visible section layout changes. */}
           </motion.div>
         )}
       </AnimatePresence>
 
+      {/* =================================================
+          MAIN STORY
+      ================================================= */}
+
       {started && (
         <main className="relative z-10">
-          <HeroSection onCta={scrollToStory} />
+
+          {/* HERO */}
+
+          <HeroSection
+            onCta={scrollToStory}
+          />
+
+          {/* HERO PHOTO */}
+
           <PhotoSection />
-          <MemoriesSection />
-          <TimelineSection />
-          <MemorySpaceSection />
+
+          {/* CHAPTER 01 */}
+
+          <Chapter01Beginning />
+
+          {/* CHAPTER 02 */}
+
+          <Chapter02LittleMoments
+            onNext={goToHerWorld}
+          />
+
+          {/* CHAPTER 03 */}
+
+          <Chapter03HerWorld
+            onNext={goToTimeline}
+          />
+
+          {/* =================================================
+              TIMELINE — DARK BACKGROUND
+          ================================================= */}
+
+          <section className="relative bg-[#0b0b0f] text-white">
+            <TimelineSection />
+          </section>
+
+          {/* =================================================
+              OUR MEMORIES — DARK BACKGROUND
+          ================================================= */}
+
+        
+
+          {/* REASONS */}
+
           <ReasonsSection />
-          <LetterSection />
+
+          {/* CHAPTER 05 */}
+
+          <Chapter05BeautifulYou />
+
+          {/* CHAPTER 06 */}
+
+          <Chapter06ForeverMemories
+            onNext={goToLetter}
+          />
+
+          {/* =================================================
+              LETTER — DARK BACKGROUND
+          ================================================= */}
+
+          <section className="relative bg-[#0b0b0f] text-white">
+            <LetterSection />
+          </section>
+
+          {/* CAKE */}
+
           <CakeSection />
+
+          {/* FINAL */}
+
           <FinalSection />
+
         </main>
       )}
 
+      {/* =================================================
+          NAVIGATION
+          ONLY AFTER STORY STARTS
+      ================================================= */}
+
       {started && <Navigation />}
-      {started && <MusicControl startPlaying={true} />}
+
+      {/* =================================================
+          MUSIC
+          ONLY AFTER STORY STARTS
+      ================================================= */}
+
+      {started && (
+        <MusicControl startPlaying={true} />
+      )}
     </div>
   );
 }
+
+export default App;
